@@ -1,12 +1,13 @@
 import "./App.css";
-
+import { useState } from "react";
 import Header from "././Components/Header/Header";
 import MainContent from "././Components/MainContent/MainContent";
-import { myData } from "./Data";
+import { myData, EXAMPLES } from "./Data";
 import ButtonMenu from "./Components/ButtonMenu";
 function App() {
-  function Alert() {
-    alert("nut duoc bam ");
+  const [topic, setTopic] = useState("Click vao button");
+  function Alert(selectopic) {
+    setTopic(selectopic);
   }
   return (
     <>
@@ -24,11 +25,14 @@ function App() {
         <menu id="menu">
           <h2>Examples</h2>
 
-          <ButtonMenu onSelect={Alert}>JSX</ButtonMenu>
-          <ButtonMenu onSelect={Alert}>Components</ButtonMenu>
-          <ButtonMenu onSelect={Alert}>Props</ButtonMenu>
-          <ButtonMenu onSelect={Alert}>State</ButtonMenu>
+          <ButtonMenu onSelect={() => Alert("jsx")}>JSX</ButtonMenu>
+          <ButtonMenu onSelect={() => Alert("components")}>
+            Components
+          </ButtonMenu>
+          <ButtonMenu onSelect={() => Alert("props")}>Props</ButtonMenu>
+          <ButtonMenu onSelect={() => Alert("state")}>State</ButtonMenu>
         </menu>
+        <p>{topic}</p>
       </main>
     </>
   );
