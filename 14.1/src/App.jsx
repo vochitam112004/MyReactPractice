@@ -5,7 +5,7 @@ import MainContent from "././Components/MainContent/MainContent";
 import { myData, EXAMPLES } from "./Data";
 import ButtonMenu from "./Components/ButtonMenu";
 function App() {
-  const [topic, setTopic] = useState("components");
+  const [topic, setTopic] = useState();
   function Alert(selectopic) {
     setTopic(selectopic);
   }
@@ -32,13 +32,28 @@ function App() {
           <ButtonMenu onSelect={() => Alert("props")}>Props</ButtonMenu>
           <ButtonMenu onSelect={() => Alert("state")}>State</ButtonMenu>
         </menu>
-        <div className="tab-content">
-          <h3>{EXAMPLES[topic].title}</h3>
-          <p>{EXAMPLES[topic].desc}</p>
-          <pre>
-            <code>{EXAMPLES[topic].code}</code>
-          </pre>
-        </div>
+        {/* {!topic ? (
+          <p>hay chon topic</p>
+        ) : (
+          <div className="tab-content">
+            {/* bracket notation *
+            <h3>{EXAMPLES[topic].title}</h3>
+            <p>{EXAMPLES[topic].desc}</p>
+            <pre>
+              <code>{EXAMPLES[topic].code}</code>
+            </pre>
+          </div>
+        )}*/}
+        {!topic && <p>hay chon topic</p>}
+        {topic && (
+          <div className="tab-content">
+            <h3>{EXAMPLES[topic].title}</h3>
+            <p>{EXAMPLES[topic].desc}</p>
+            <pre>
+              <code>{EXAMPLES[topic].code}</code>
+            </pre>
+          </div>
+        )}
       </main>
     </>
   );
